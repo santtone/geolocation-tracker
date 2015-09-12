@@ -1,0 +1,4 @@
+/www/.idea/*.name
+/www/.idea/*.xml
+/www/.idea/scopes/*.xml
+/www/*.iml
