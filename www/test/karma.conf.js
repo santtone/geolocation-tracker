@@ -23,6 +23,8 @@ module.exports = function(config) {
     files: [
       // bower:js
       'bower_components/angular/angular.js',
+      'bower_components/angular-sanitize/angular-sanitize.js',
+      'bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.min.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

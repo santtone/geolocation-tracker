@@ -2,5 +2,6 @@
 
 angular
   .module('geolocationTracker', [
-    'ui.router'
+    'ui.router',
+    'openlayers-directive'
   ]);
