@@ -3,5 +3,7 @@
 angular
   .module('geolocationTracker', [
     'ui.router',
-    'openlayers-directive'
+    'openlayers-directive',
+    'ngMaterial',
+    'ngMdIcons'
   ]);

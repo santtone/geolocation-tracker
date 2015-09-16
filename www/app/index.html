@@ -5,29 +5,36 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-material-icons/angular-material-icons.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link rel="import" href="lib/vulcanized.html">
 </head>
-<body ng-app="geolocationTracker" ui-view>
+<body ng-app="geolocationTracker" ui-view class="fit">
 
 <!-- build:js(.) scripts/plugins.js -->
-<!-- bower:js -->
 <script src="bower_components/openlayers3/build/ol.js"></script>
-<!-- endbower -->
+<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 <!-- endbuild -->
 
-<!-- build:js(.) scripts/vendor.js -->
+<!-- build:js(.) scripts/modules.js -->
 <!-- bower:js -->
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.js"></script>
+<script src="bower_components/angular-openlayers-directive/dist/angular-openlayers-directive.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 

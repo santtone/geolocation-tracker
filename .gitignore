@@ -2,3 +2,4 @@
 /www/.idea/*.xml
 /www/.idea/scopes/*.xml
 /www/*.iml
+/www/.idea/dictionaries
