@@ -24,8 +24,6 @@ angular.module('geolocationTracker')
         $scope.cMap = new olcs.OLCesium({map: $scope.map});
         $scope.cMap.setEnabled(true);
 
-        $scope.cMap.getCamera().setTilt(Math.PI / 8)
-
       }
     };
   });
