@@ -17,11 +17,13 @@
     <!-- endbuild -->
     <link rel="import" href="lib/vulcanized.html">
 </head>
-<body ng-app="geolocationTracker" ui-view class="fit">
+<body ng-app="geolocationTracker" ui-view>
 
 <!-- build:js(.) scripts/plugins.js -->
-<script src="bower_components/openlayers3/build/ol.js"></script>
 <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<script src="lib/ol3-cesium-v1.8/ol3/ol.js"></script>
+<script src="lib/ol3-cesium-v1.8/Cesium/Cesium.js"></script>
+<script src="lib/ol3-cesium-v1.8/ol3cesium.js"></script>
 <!-- endbuild -->
 
 <!-- build:js(.) scripts/modules.js -->
@@ -43,6 +45,7 @@
 <script src="scripts/state-config.js"></script>
 <script src="scripts/main/main.js"></script>
 <script src="scripts/map/map.js"></script>
+<script src="scripts/map/controls/zoomer/zoomer.js"></script>
 <!-- endbuild -->
 </body>
 </html>

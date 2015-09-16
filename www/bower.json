@@ -9,6 +9,7 @@
     "angular-ui-router": "~0.2.15",
     "iron-fit-behavior": "PolymerElements/iron-fit-behavior#1.0.0",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#1.0.0",
+    "ol3-cesium": "https://github.com/openlayers/ol3-cesium.git#v1.8",
     "polymer": "Polymer/polymer#1.0.0"
   },
   "devDependencies": {
