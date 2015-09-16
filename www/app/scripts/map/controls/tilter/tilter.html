@@ -1,6 +1,8 @@
-<md-button class="md-fab md-mini" aria-label="Tilt Up" style="position: fixed; bottom: 60px" ng-click="tiltUp()">
-    <ng-md-icon icon="keyboard_arrow_up"></ng-md-icon>
-</md-button>
-<md-button class="md-fab md-mini" aria-label="Tilt Down" style="position: fixed; bottom: 10px" ng-click="tiltDown()">
-    <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
-</md-button>
+<div class="gt-map-control-tilter" layout="column">
+    <md-button class="md-fab md-mini md-primary" aria-label="Tilt Down" ng-click="tiltDown()">
+        <ng-md-icon icon="keyboard_arrow_up"></ng-md-icon>
+    </md-button>
+    <md-button class="md-fab md-mini md-primary" aria-label="Tilt Up" ng-click="tiltUp()">
+        <ng-md-icon icon="keyboard_arrow_down"></ng-md-icon>
+    </md-button>
+</div>

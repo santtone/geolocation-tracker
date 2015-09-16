@@ -12,3 +12,13 @@ html, body {
   height: 100%;
   overflow: hidden;
 }
+
+.gt-map-control-zoomer{
+  position: fixed;
+  top: 10px;
+}
+
+.gt-map-control-tilter{
+  position: fixed;
+  bottom: 10px;
+}

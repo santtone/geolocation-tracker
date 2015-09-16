@@ -1,6 +1,10 @@
-<md-button class="md-fab md-mini" aria-label="Zoom In" style="position: fixed; top: 10px" ng-click="zoomIn()">
-    <ng-md-icon icon="add"></ng-md-icon>
-</md-button>
-<md-button class="md-fab md-mini" aria-label="Zoom Out" style="position: fixed; top: 60px" ng-click="zoomOut()">
-    <ng-md-icon icon="remove"></ng-md-icon>
-</md-button>
+<div class="gt-map-control-zoomer">
+    <div layout="column">
+        <md-button class="md-fab md-mini md-primary" aria-label="Zoom In" ng-click="zoomIn()">
+            <ng-md-icon icon="add"></ng-md-icon>
+        </md-button>
+        <md-button class="md-fab md-mini md-primary" aria-label="Zoom Out" ng-click="zoomOut()">
+            <ng-md-icon icon="remove"></ng-md-icon>
+        </md-button>
+    </div>
+</div>
