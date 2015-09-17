@@ -3,3 +3,6 @@
 /www/.idea/scopes/*.xml
 /www/*.iml
 /www/.idea/dictionaries
+/geolocation-tracker/plugins
+/geolocation-tracker/www
+/geolocation-tracker/platforms
