@@ -19,13 +19,10 @@ module.exports = function (grunt) {
     cdnify: 'grunt-google-cdn'
   });
 
-  grunt.loadNpmTasks('grunt-vulcanize');
-  grunt.loadNpmTasks('grunt-mkdir');
-
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: '../cordova/www'
   };
 
   // Define the configuration for all the tasks
@@ -52,7 +49,7 @@ module.exports = function (grunt) {
         tasks: ['newer:jshint:test', 'karma']
       },
       compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        files: ['<%= yeoman.app %>/styles/{,**/}*.{scss,sass}'],
         tasks: ['compass:server', 'autoprefixer:server']
       },
       gruntfile: {
@@ -64,10 +61,11 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/{,**/}*.html',
-          '.tmp/styles/{,**/}*.css',
+          '.tmp/styles/{,*/}*.css',
+          '{.tmp,<%= yeoman.app %>}/scripts/{,**/}*.js',
+          '{.tmp,<%= yeoman.app %>}/scripts/{,**/}*.html',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ],
-        tasks: ['vulcanize:default']
+        ]
       }
     },
 
@@ -92,10 +90,6 @@ module.exports = function (grunt) {
               connect().use(
                 '/app/styles',
                 connect.static('./app/styles')
-              ),
-              connect().use(
-                '/lib',
-                connect.static('./lib')
               ),
               connect.static(appConfig.app)
             ];
@@ -148,6 +142,9 @@ module.exports = function (grunt) {
 
     // Empties folders to start fresh
     clean: {
+      options: {
+        force: true // force:true is used to enable delete outside of working directory.
+      },
       dist: {
         files: [
           {
@@ -254,7 +251,6 @@ module.exports = function (grunt) {
     filerev: {
       dist: {
         src: [
-          '<%= yeoman.dist %>/lib/{,*/}*.html',
           '<%= yeoman.dist %>/scripts/{,*/}*.js',
           '<%= yeoman.dist %>/styles/{,*/}*.css',
           '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
@@ -284,9 +280,9 @@ module.exports = function (grunt) {
 
     // Performs rewrites based on filerev and the useminPrepare configuration
     usemin: {
-      html: ['<%= yeoman.dist %>/{,*/}*.html'],
-      css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      js: ['<%= yeoman.dist %>/scripts/{,*/}*.js'],
+      html: ['<%= yeoman.dist %>/{,**/}*.html'],
+      css: ['<%= yeoman.dist %>/styles/{,**/}*.css'],
+      js: ['<%= yeoman.dist %>/scripts/{,**/}*.js'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
@@ -365,7 +361,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: '<%= yeoman.dist %>',
-            src: ['*.html'],
+            src: ['*.html', 'scripts/**/*.html'],
             dest: '<%= yeoman.dist %>'
           }
         ]
@@ -375,12 +371,12 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'geolocationTrackerApp',
+          module: 'geolocationTracker',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
         cwd: '<%= yeoman.app %>',
-        src: 'views/{,*/}*.html',
+        src: 'scripts/{,**/}*.html',
         dest: '.tmp/templateCache.js'
       }
     },
@@ -420,21 +416,22 @@ module.exports = function (grunt) {
               '*.{ico,png,txt}',
               '.htaccess',
               '*.html',
+              'scripts/{,**/}*.html',
               'images/{,*/}*.{webp}',
               'styles/fonts/{,*/}*.*'
             ]
           },
           {
             expand: true,
-            cwd: '.tmp/lib/',
-            dest: '<%= yeoman.dist %>/lib',
-            src: '**'
-          },
-          {
-            expand: true,
             cwd: '.tmp/images',
             dest: '<%= yeoman.dist %>/images',
             src: ['generated/*']
+          },
+          {
+            expand: true,
+            cwd: '<%= yeoman.app %>/lib',
+            dest: '<%= yeoman.dist %>/lib',
+            src: '**'
           }
         ]
       },
@@ -467,24 +464,6 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    },
-    mkdir: {
-      all: {
-        options: {
-          create: ['.tmp', '.tmp/lib']
-        }
-      }
-    },
-    vulcanize: {
-      default: {
-        options: {
-          'inline': true,
-          'strip': true
-        },
-        files: {
-          '.tmp/lib/vulcanized.html': 'app/elements/vulcanize.html'
-        }
-      }
     }
   });
 
@@ -496,8 +475,6 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
-      'mkdir',
-      'vulcanize',
       'wiredep',
       'concurrent:server',
       'autoprefixer:server',
@@ -522,8 +499,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'mkdir',
-    'vulcanize',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
